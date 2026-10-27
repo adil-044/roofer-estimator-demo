@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  /* Roofer / Contractor — Professional Industrial (Color by Customer Type) */
+  /* Customer: Roofing company owner/ops — job site, truck, between climbs */
+  /* Scene: Phone in glove, bright sun, needs speed + trust, not fluff */
+  /* Strategy: Restrained → Committed landing */
+  /* Accent family: Steel/Slate blue-gray (ops, calm industrial) + Amber alert */
+  /* Dark bias: job site / outdoor screen contrast */
+
+  --color-bg: #0A0F14;
+  --color-surface: #111820;
+  --color-surface-elevated: #18202A;
+  --color-border: #1E2A38;
+  --color-border-hover: #2A3A4A;
+
+  --color-text: #F0F4F8;
+  --color-text-secondary: #9CAAB8;
+  --color-text-tertiary: #6B7A8A;
+
+  --color-steel: #3D7A9E;
+  --color-steel-hover: #4DA3C4;
+  --color-steel-muted: #2A5A7A;
+
+  --color-amber: #E8A838;
+  --color-amber-hover: #F0C040;
+  --color-amber-muted: #B88428;
+
+  --color-success: #3D9E6A;
+  --color-danger: #C45C5C;
+
+  --font-display: "Instrument Serif", serif;
+  --font-body: "Source Sans 3", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --radius-base: 0.75rem;
+  --radius-lg: 1rem;
+
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.45);
+  --shadow-elevated: 0 12px 40px rgba(0,0,0,0.55);
+
+  --spacing-section: 5rem;
+  --spacing-gutter: 1.25rem;
+  --container-max: 80rem;
+}
+
+@layer base {
+  * { margin: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; }
+  .font-mono { font-family: var(--font-mono); }
+  ::selection { background: var(--color-amber); color: var(--color-bg); }
+  :focus-visible { outline: 2px solid var(--color-amber); outline-offset: 2px; }
+}
+
+@layer utilities {
+  .container-custom { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--spacing-gutter); }
+  .section { padding: var(--spacing-section) 0; }
+  .text-balance { text-wrap: balance; }
+  .text-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .text-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[var(--radius-base)] font-medium text-[var(--color-bg)] bg-[var(--color-amber)] hover:bg-[var(--color-amber-hover)] transition-colors;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[var(--radius-base)] font-medium text-[var(--color-text)] bg-[var(--color-surface-elevated)] border border-[var(--color-border)] hover:bg-[var(--color-surface)] hover:border-[var(--color-border-hover)] transition-colors;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[var(--radius-base)] font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-elevated)] transition-colors;
+  }
+  .card {
+    @apply bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[var(--radius-lg)] p-6 md:p-8 transition-all duration-200 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-card)];
+  }
+  .card-elevated {
+    @apply bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-[var(--radius-lg)] p-6 md:p-8 shadow-[var(--shadow-elevated)];
+  }
+  .input-field {
+    @apply w-full px-4 py-3 rounded-[var(--radius-base)] bg-[var(--color-surface-elevated)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-text-tertiary)] focus:border-[var(--color-steel)] focus:outline-none focus:ring-2 focus:ring-[var(--color-steel)]/20 transition-colors;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  .badge-steel {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: var(--color-steel-muted);
+    color: var(--color-steel);
+  }
+  .badge-amber {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: var(--color-amber-muted);
+    color: var(--color-amber);
+  }
+  .badge-success {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: var(--color-success);
+    opacity: 0.2;
+    color: var(--color-success);
+  }
+}
